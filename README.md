@@ -540,6 +540,14 @@ curl http://206.189.94.197:8080/health
 
 Pipeline berhasil berjalan dengan baik, setiap perubahan yang di-push ke `main` akan melewati proses testing, build, push, dan deploy secara otomatis, serta hasilnya bisa langsung dilihat di VPS.
 
+## Link Image Docker & URL API
+
+| Resource                 | Link                                                      |
+| ------------------------ | --------------------------------------------------------- |
+| Docker Hub Image         | https://hub.docker.com/r/rrraynald/netics-modul1-cicd-api |
+| API Endpoint (via nginx) | http://206.189.94.197/health                              |
+| API Endpoint (direct)    | http://206.189.94.197:8080/health                         |
+
 ---
 
 ## Referensi
