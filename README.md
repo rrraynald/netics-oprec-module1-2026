@@ -63,7 +63,7 @@ Sebelum lanjut ke tahap selanjutnya, kita harus memastikan API berjalan dengan b
 node src/index.js
 ```
 
-![alt text](media/1a.png)
+![Run server](media/1a.png)
 
 2. Curl endpoint:
 
@@ -71,7 +71,7 @@ node src/index.js
 curl http://localhost:8080/health
 ```
 
-## ![alt text](media/1b.png)
+## ![Curl endpoint](media/1b.png)
 
 **Kesimpulan**
 
@@ -125,7 +125,7 @@ cd src
 docker-compose up -d
 ```
 
-![alt text](media/2a.png)
+![Build and run container](media/2a.png)
 
 2. Curl endpoint:
 
@@ -133,7 +133,7 @@ docker-compose up -d
 curl http://localhost:8080/health
 ```
 
-![alt text](media/2b.png)
+![Curl endpoint](media/2b.png)
 
 3. Cek container yang berjalan:
 
@@ -141,7 +141,7 @@ curl http://localhost:8080/health
 docker ps
 ```
 
-## ![alt text](media/2c.png)
+## ![Docker ps](media/2c.png)
 
 **Kesimpulan**
 
@@ -213,7 +213,7 @@ docker --version
 ufw status
 ```
 
-![alt text](media/3a.png)
+![Pengecekan root login dan Docker](media/3a.png)
 
 2. Pengecekan user `deploy` dan permission Docker:
 
@@ -223,7 +223,7 @@ ssh deploy@206.189.94.197
 docker --version
 ```
 
-![alt text](media/3b.png)
+![Pengecekan user deploy](media/3b.png)
 
 **Kesimpulan**
 
@@ -333,7 +333,7 @@ PLAY RECAP ***************************
 netics-cicd : ok=6  changed=5  unreachable=0  failed=0  skipped=0  rescued=0  ignored=0
 ```
 
-![alt text](media/4a.png)
+![Ansible playbook output](media/4a.png)
 
 2. Run docker container di VPS:
 
@@ -347,7 +347,7 @@ docker run -d \
   rrraynald/netics-modul1-cicd-api:latest
 ```
 
-![alt text](media/4b.png)
+![Run docker container](media/4b.png)
 
 3. Test nginx forwarding dengan curl dari VPS:
 
@@ -355,7 +355,7 @@ docker run -d \
 curl http://localhost/health
 ```
 
-![alt text](media/4c.png)
+![Test nginx forwarding](media/4c.png)
 
 4. Test nginx forwarding dari lokal:
 
@@ -364,7 +364,7 @@ curl http://206.189.94.197/health
 curl http://206.189.94.197:8080/health
 ```
 
-![alt text](media/4d.png)
+![Test nginx forwarding dari lokal](media/4d.png)
 
 **Kesimpulan**
 
@@ -526,8 +526,37 @@ git push origin main
 curl http://206.189.94.197:8080/health
 ```
 
+![alt text](media/5b1.png)
+![alt text](media/5b2.png)
+![alt text](media/5b3.png)
+
 4. Lakukan perubahan kembali ke awal lagi untuk memastikan pipeline berjalan konsisten, lalu push lagi ke github dan cek hasilnya.
+
+![alt text](media/5c1.png)
+![alt text](media/5c2.png)
+![alt text](media/5c3.png)
+
+**Kesimpulan**
+
+Pipeline berhasil berjalan dengan baik, setiap perubahan yang di-push ke `main` akan melewati proses testing, build, push, dan deploy secara otomatis, serta hasilnya bisa langsung dilihat di VPS.
 
 ---
 
 ## Referensi
+
+| Sumber                        | Link                                                                                                              |
+| ----------------------------- | ----------------------------------------------------------------------------------------------------------------- |
+| Node.js + Express             | https://www.geeksforgeeks.org/node-js/how-to-create-and-run-node-js-project-in-vs-code-editor/                    |
+| Docker & Containerize Node.js | https://www.hostinger.com/tutorials/how-to-use-node-js-with-docker                                                |
+| Docker install Ubuntu         | https://docs.docker.com/engine/install/ubuntu/                                                                    |
+| DigitalOcean Droplet setup    | https://docs.digitalocean.com/products/droplets/                                                                  |
+| Ansible playbook              | https://dev.to/dpuig/creating-an-ansible-playbook-to-install-and-configure-nginx-for-hosting-static-websites-3n6j |
+| GitHub Actions documentation  | https://docs.github.com/en/actions                                                                                |
+| actions/checkout              | https://github.com/marketplace/actions/checkout                                                                   |
+| actions/setup-node            | https://github.com/marketplace/actions/setup-node-js-environment                                                  |
+| docker/setup-buildx-action    | https://github.com/marketplace/actions/docker-setup-buildx                                                        |
+| docker/login-action           | https://github.com/marketplace/actions/docker-login                                                               |
+| docker/metadata-action        | https://github.com/marketplace/actions/docker-metadata-action                                                     |
+| docker/build-push-action      | https://github.com/marketplace/actions/build-and-push-docker-images                                               |
+| appleboy/ssh-action           | https://github.com/marketplace/actions/ssh-remote-commands                                                        |
+| AI assistance — ChatGPT       | https://chatgpt.com/share/69c67bb5-561c-8322-8e6d-601f8cbedd11                                                    |
